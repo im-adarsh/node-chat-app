@@ -21,7 +21,7 @@ jQuery('#message-form').on('submit', function(e) {
   e.preventDefault();
 
   socket.emit('createMessage', {
-    from: 'User',
+    from: jQuery('#message-form-username').val(),
     text: jQuery('[name=message]').val(),
   }, function() {
 

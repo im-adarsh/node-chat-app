@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
 </head>
 
-<body>
+<body onload="showNameDialog()">
 
 <div>
 
@@ -18,6 +18,8 @@
 </ol>
 <form id="message-form">
     <input id="message-form-input" type="text" name="message" placeholder="Type your message ..." autocomplete="off"/>
+    <input id="message-form-username" type="hidden"/>
+
     <button>Send</button>
 </form>
 
@@ -25,6 +27,15 @@
 <script src="./js/lib/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="/socket.io/socket.io.js"></script>
 <script type="text/javascript" src="/js/index.js"></script>
+
+<script>
+  function showNameDialog() {
+    var person = prompt('Please enter your name', 'Harry Potter');
+    if (person != null) {
+      jQuery('#message-form-username').val(person);
+    }
+  }
+</script>
 
 
 </body>
