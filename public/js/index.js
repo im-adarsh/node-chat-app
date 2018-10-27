@@ -10,9 +10,12 @@ socket.on('disconnect', () => {
 
 socket.on('newMessage', (message) => {
   console.log('New Message', message);
+  var align = getChatMessageClass(message.from,
+      jQuery('#message-form-username').val());
 
   var li = jQuery('<li></li>');
   li.text(`${message.from} : ${message.text}`);
+  li.addClass(align);
 
   jQuery('#messages').append(li);
 });
@@ -28,6 +31,9 @@ jQuery('#message-form').on('submit', function(e) {
   });
 
   jQuery('#message-form-input').val('');
+
+  $('#messages-container').
+      scrollTop($('#messages-container')[0].scrollHeight + 50);
 });
 
 
