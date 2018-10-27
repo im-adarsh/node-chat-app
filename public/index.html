@@ -6,6 +6,38 @@
 
     <style type="text/css">
 
+        .wrapper-container {
+            height: 100%;
+            overflow-y: scroll;
+        }
+
+        .header-wrapper-container {
+            background-color: #e0e0e0;
+            height: 66px;
+            position: fixed;
+            width: 100%;
+        }
+
+        .middle-wrapper-container {
+            background-color: #eeeeeea3;
+            height: 658px;
+            width: 100%;
+            margin-top: 66px;
+            overflow-y: scroll;
+        }
+
+        .bottom-wrapper-container {
+            background-color: #e0e0e0;
+            height: 66px;
+            position: fixed;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+
         .admin-message {
             text-align: center;
             color: #a7abab;
@@ -29,7 +61,7 @@
 
 <body onload="showNameDialog()" style="background-color: #f2f5f9">
 
-<div class="wrapper-container" style="height: 100%;overflow-y: scroll;">
+<div class="wrapper-container" style="">
     <div class="header-wrapper-container">
         <ul class="demo-list-control mdl-list">
             <li class="mdl-list__item">
@@ -37,17 +69,16 @@
             </li>
         </ul>
     </div>
-    <div class="middle-wrapper-container">
-        <div id="messages-container" style="height: 630px;overflow-y: scroll;">
+    <div class="middle-wrapper-container" id="middle-wrapper-container">
             <ol id="messages"></ol>
-        </div>
     </div>
-    <div class="bottom-wrapper-container" style="height: 20px;position: fixed; ">
-        <form id="message-form">
-            <input id="message-form-input" type="text" name="message" placeholder="Type your message ..."
+    <div class="bottom-wrapper-container">
+        <form id="message-form" style="width: 100%;display: flex;justify-content: space-evenly;">
+            <input style="width: 80%;height: 26px;" id="message-form-input" type="text" name="message"
+                   placeholder="Type your message ..."
                    autocomplete="off"/>
             <input id="message-form-username" type="hidden"/>
-            <button>Send</button>
+            <button style="width: 10%;height: 26px;">Send</button>
         </form>
     </div>
 </div>

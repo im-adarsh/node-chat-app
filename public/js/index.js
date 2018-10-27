@@ -23,6 +23,9 @@ socket.on('newMessage', (message) => {
 jQuery('#message-form').on('submit', function(e) {
   e.preventDefault();
 
+  if (jQuery('[name=message]').val() === '') {
+    return;
+  }
   socket.emit('createMessage', {
     from: jQuery('#message-form-username').val(),
     text: jQuery('[name=message]').val(),
@@ -32,8 +35,8 @@ jQuery('#message-form').on('submit', function(e) {
 
   jQuery('#message-form-input').val('');
 
-  $('#messages-container').
-      scrollTop($('#messages-container')[0].scrollHeight + 50);
+  $('#middle-wrapper-container').
+      scrollTop($('#middle-wrapper-container')[0].scrollHeight + 50);
 });
 
 
