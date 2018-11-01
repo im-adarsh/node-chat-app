@@ -1,3 +1,23 @@
+stages:
+  - ver
+  - init
+
+ver:
+  stage: ver
+  script:
+    - python -V
+    - node --version
+    - grunt --version
+    - bower --version
+
+job:
+  stage: init
+  script:
+    - npm cache clean
+    - rm -rf node_modules
+    - npm install
+
+
 variables:
   AWS_DEFAULT_REGION: "us-east-1"
   AWS_SECRET_ACCESS_KEY: "AKIAIFGV55AHYKXFKCFA"
