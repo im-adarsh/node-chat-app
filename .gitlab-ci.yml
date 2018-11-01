@@ -20,13 +20,13 @@ job:
   stage: deploy
   # Script to run for deploying application to AWS
   script:
-    - apt-get --quiet install --yes python-pip # AWS CLI requires python-pip, python is installed by default
-    - pip install -U pip  # pip update
+    - apt-get install python-pip # AWS CLI requires python-pip, python is installed by default
+    - pip install -U pip  # pip update 
     - pip install awscli  # AWS CLI installation
     - npm run build
     - ls
-    - $G distZip  # creates distribution zip for deployment
-    - aws s3 cp $BUNDLE_SRC $AWS_S3_LOCATION # Uploads the zipfile to S3 and expects the AWS Code Pipeline/Code Deploy to pick up
+    #- $G distZip  # creates distribution zip for deployment
+    # - aws s3 cp $BUNDLE_SRC $AWS_S3_LOCATION # Uploads the zipfile to S3 and expects the AWS Code Pipeline/Code Deploy to pick up
   # requires previous CI stages to succeed in order to execute
 
 
