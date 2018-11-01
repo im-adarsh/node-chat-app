@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./server/server.js",
-    "zip": "bestzip bundle.zip *",
+    "zip": "bestzip node-chat-app.zip *",
     "deploy": "npm run zip"
     
   },
