@@ -3,7 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./server/server.js"
+    "start": "node ./server/server.js",
+    "zip": "bestzip bundle.zip *",
+    "deploy": "npm run zip"
+    
   },
   "dependencies": {
     "cookie-parser": "~1.4.3",
