@@ -1,22 +1,50 @@
-stages:
-  - ver
-  - init
-
-ver:
-  stage: ver
-  script:
-    - ls
-
-job:
-  stage: init
-  script:
-    - npm cache clean
-    - rm -rf node_modules
-    - npm install
-
-
 variables:
   AWS_DEFAULT_REGION: "us-east-1"
   AWS_SECRET_ACCESS_KEY: "AKIAIFGV55AHYKXFKCFA"
   AWS_ACCESS_KEY_ID:   "9j6NhdHMMNczW03ZA/BkdWmiZjg66s7q9Hsqd/00"
   AWS_S3_LOCATION: "s3://s3-code-deploy-ec2/node-chat-app.zip"
+
+image: node:latest
+
+stages:
+  - ver
+  - deploy
+
+job:
+  stage: ver
+  script:
+    - ls
+
+### DEPLOY ####################################################
+job:
+  stage: deploy
+  # Script to run for deploying application to AWS
+  script:
+    - apt-get --quiet install --yes python-pip # AWS CLI requires python-pip, python is installed by default
+    - pip install -U pip  # pip update
+    - pip install awscli  # AWS CLI installation
+    - npm run build
+    - ls
+    - $G distZip  # creates distribution zip for deployment
+    - aws s3 cp $BUNDLE_SRC $AWS_S3_LOCATION # Uploads the zipfile to S3 and expects the AWS Code Pipeline/Code Deploy to pick up
+  # requires previous CI stages to succeed in order to execute
+  when: on_success
+  stage: deploy #assigns the stage as deploy
+  environment: production # Assign the Gitlab Environment for tracking purposes
+  cache:
+    key: "$CI_BUILD_NAME/$CI_BUILD_REF_NAME"
+    untracked: true
+    paths:
+        - build/
+  # Applies only to tags matching the regex: ie: v1.0.0-My-App-Release
+  only:
+    - /^v\d+\.\d+\.\d+-.*$/
+  except:
+    - branches
+    - triggers
+
+
+
+
+
+
