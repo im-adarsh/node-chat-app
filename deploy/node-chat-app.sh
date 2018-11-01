@@ -1,0 +1,1 @@
+echo "starting the node-chat-app.sh"
