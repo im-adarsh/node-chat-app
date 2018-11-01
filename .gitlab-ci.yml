@@ -25,7 +25,7 @@ job:
     - apt-get  --quiet install --yes  npm
     - apt-get  --quiet install --yes  python-pip # AWS CLI requires python-pip, python is installed by default
     - pip install -U pip  # pip update 
-    - pip  --quiet install --yes  awscli  # AWS CLI installation
+    - pip install awscli  # AWS CLI installation
     - npm run build
     - ls
     #- $G distZip  # creates distribution zip for deployment
