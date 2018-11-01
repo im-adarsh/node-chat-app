@@ -5,10 +5,7 @@ stages:
 ver:
   stage: ver
   script:
-    - python -V
-    - node --version
-    - grunt --version
-    - bower --version
+    - ls
 
 job:
   stage: init
