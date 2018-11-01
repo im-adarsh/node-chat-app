@@ -19,6 +19,11 @@ job:
 job:
   stage: deploy
   # Script to run for deploying application to AWS
+  variables:
+      AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION
+      AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+      AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+      AWS_S3_LOCATION: s3://s3-code-deploy-ec2
   script:
     - apt-get update
     - apt-get --quiet install --yes nodejs
@@ -30,7 +35,7 @@ job:
     - npm run deploy
     - ls
     - echo $AWS_SECRET_ACCESS_KEY
-    - aws s3 cp node-chat-app.zip s3://s3-code-deploy-ec2/ # Uploads the zipfile to S3 and expects the AWS Code Pipeline/Code Deploy to pick up
+    - aws s3 cp node-chat-app.zip $AWS_S3_LOCATION # Uploads the zipfile to S3 and expects the AWS Code Pipeline/Code Deploy to pick up
     
   # requires previous CI stages to succeed in order to execute
 
