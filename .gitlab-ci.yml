@@ -21,11 +21,11 @@ job:
   # Script to run for deploying application to AWS
   script:
     - apt-get update
-    - apt-get install nodejs
-    - apt-get install npm
-    - apt-get install python-pip # AWS CLI requires python-pip, python is installed by default
-    - pip install -U pip  # pip update 
-    - pip install awscli  # AWS CLI installation
+    - apt-get --quiet install --yes nodejs
+    - apt-get  --quiet install --yes  npm
+    - apt-get  --quiet install --yes  python-pip # AWS CLI requires python-pip, python is installed by default
+    - pip  --quiet install --yes  -U pip  # pip update 
+    - pip  --quiet install --yes  awscli  # AWS CLI installation
     - npm run build
     - ls
     #- $G distZip  # creates distribution zip for deployment
