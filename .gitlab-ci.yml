@@ -1,9 +1,9 @@
 image: ubuntu:latest
 
 variables:
-  AWS_DEFAULT_REGION: "us-east-1"
-  AWS_SECRET_ACCESS_KEY: "AKIAIFGV55AHYKXFKCFA"
-  AWS_ACCESS_KEY_ID:   "9j6NhdHMMNczW03ZA/BkdWmiZjg66s7q9Hsqd/00"
+  #AWS_DEFAULT_REGION: "us-east-1"
+  #AWS_SECRET_ACCESS_KEY: "AKIAIFGV55AHYKXFKCFA"
+  #AWS_ACCESS_KEY_ID:   "9j6NhdHMMNczW03ZA/BkdWmiZjg66s7q9Hsqd/00"
   AWS_S3_LOCATION: "s3://s3-code-deploy-ec2/"
 
 stages:
@@ -29,7 +29,7 @@ job:
     - npm install
     - npm run deploy
     - ls
-    - echo $AWS_SECRET_ACCESS_KEY
+    - echo $AWS_S3_LOCATION
     - aws s3 cp node-chat-app.zip $AWS_S3_LOCATION # Uploads the zipfile to S3 and expects the AWS Code Pipeline/Code Deploy to pick up
     
   # requires previous CI stages to succeed in order to execute
