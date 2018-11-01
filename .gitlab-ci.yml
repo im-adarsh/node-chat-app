@@ -28,20 +28,6 @@ job:
     - $G distZip  # creates distribution zip for deployment
     - aws s3 cp $BUNDLE_SRC $AWS_S3_LOCATION # Uploads the zipfile to S3 and expects the AWS Code Pipeline/Code Deploy to pick up
   # requires previous CI stages to succeed in order to execute
-  when: on_success
-  stage: deploy #assigns the stage as deploy
-  environment: production # Assign the Gitlab Environment for tracking purposes
-  cache:
-    key: "$CI_BUILD_NAME/$CI_BUILD_REF_NAME"
-    untracked: true
-    paths:
-        - build/
-  # Applies only to tags matching the regex: ie: v1.0.0-My-App-Release
-  only:
-    - /^v\d+\.\d+\.\d+-.*$/
-  except:
-    - branches
-    - triggers
 
 
 
