@@ -1,0 +1,14 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /var/api/
+hooks:
+  AfterInstall:
+    - location: scripts/app-install.sh
+      runas: root
+      timeout: 300
+  ApplicationStart:
+    - location: scripts/app-start.sh
+      runas: root
+      timeout: 60
