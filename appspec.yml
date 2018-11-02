@@ -5,10 +5,10 @@ files:
     destination: /home/ec2-node-chat-app
 hooks:
   AfterInstall:
-    - location: scripts/app-install.sh
+    - location: deploy/scripts/app-install.sh
       runas: root
       timeout: 300
   ApplicationStart:
-    - location: scripts/app-start.sh
+    - location: deploy/scripts/app-start.sh
       runas: root
       timeout: 60
