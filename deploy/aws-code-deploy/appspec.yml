@@ -1,41 +1,14 @@
 version: 0.0
 os: linux
 files:
-  - source: ./my_app/ # This line assumes that your deployment code is located in
-    destination: /home/ec2-user/my_app
-permissions:
-  # sets application runner script as executable - This example assumes the sample 'my_app.sh' script has been added to the the directory 'my_app' and serves as the application launcher
-  - object: /home/ec2-user/my_app/
-    pattern: "my_app.sh"
-    owner: ec2-user
-    mode: 755
-    type:
-      - file
-  # sets ec2-user as the owner:group for the application deployment directory
-  - object: /home/ec2-user/
-    pattern: "my_app"
-    owner: ec2-user
-    type:
-      - directory
+  - source: /
+    destination: /var/api/
 hooks:
-  # All hook scripts are assumed to be in the /install/aws_cd directory located at the root of the deployment zip archive
-  ApplicationStop:
-    - location: scripts/app_stop.sh
-      timeout: 180
-      runas: ec2-user
-  BeforeInstall:
-    - location: scripts/before_install.sh
-      timeout: 180
-      runas: ec2-user
   AfterInstall:
-    - location: scripts/after_install.sh
-      timeout: 180
-      runas: ec2-user
+    - location: scripts/npm-install.sh
+      runas: root
+      timeout: 300
   ApplicationStart:
-    - location: scripts/app_start.sh
-      timeout: 180
-      runas: ec2-user
-  ValidateService:
-    - location: scripts/validate_service.sh
-      timeout: 180
-      runas: ec2-user
+    - location: scripts/npm-start.sh
+      runas: root
+      timeout: 60
