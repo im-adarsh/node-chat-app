@@ -35,7 +35,7 @@ job:
     - npm run deploy
     - ls
     - echo $AWS_SECRET_ACCESS_KEY
-    - aws s3 cp node-chat-app.zip $AWS_S3_LOCATION # Uploads the zipfile to S3 and expects the AWS Code Pipeline/Code Deploy to pick up
+    # - aws s3 cp node-chat-app.zip $AWS_S3_LOCATION # Uploads the zipfile to S3 and expects the AWS Code Pipeline/Code Deploy to pick up
     
   # requires previous CI stages to succeed in order to execute
 
