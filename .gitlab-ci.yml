@@ -31,4 +31,4 @@ deployToAWS:
     - master
   stage: deploy
   script:
-    - bash deploy/deploy.sh
+    - bash deploy/aws-code-deploy/deploy.sh
