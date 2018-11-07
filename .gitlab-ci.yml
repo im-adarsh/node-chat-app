@@ -34,6 +34,7 @@ uploadToS3:
   stage: deploy
   before_script:
     - pip install awscli # Install the SDK
+    - apt-get install zip
   script:
     #- bash deploy/aws-code-deploy/deploy.sh
     - ls
