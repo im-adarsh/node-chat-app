@@ -1,3 +1,4 @@
+#!/bin/bash
 apt-get update
 apt-get --quiet install --yes nodejs
 apt-get  --quiet install --yes  npm
