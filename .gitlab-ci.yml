@@ -28,7 +28,7 @@ test:
 
 deployToAWS:
   only:
-    - master
+    - develop
   stage: deploy
   script:
     - bash deploy/aws-code-deploy/deploy.sh
