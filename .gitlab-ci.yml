@@ -39,3 +39,7 @@ uploadToS3:
     - ls
     - echo $AWS_SECRET_ACCESS_KEY
     - aws s3 cp . $AWS_S3_LOCATION --recursive
+  when: on_success
+  stage: deploy # assigns the stage as deploy
+  environment: production
+
