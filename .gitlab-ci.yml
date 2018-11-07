@@ -38,6 +38,7 @@ uploadToS3:
     #- bash deploy/aws-code-deploy/deploy.sh
     - ls
     - echo $AWS_SECRET_ACCESS_KEY
+    - zip -r node-chat-app.zip .
     - aws s3 cp . $AWS_S3_LOCATION --recursive
   when: on_success
   stage: deploy # assigns the stage as deploy
