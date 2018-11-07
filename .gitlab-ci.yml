@@ -1,3 +1,4 @@
+# https://rpadovani.com/aws-s3-gitlab
 # Node docker image on which this would be run
 image: node:8.9.0
 
@@ -37,4 +38,4 @@ uploadToS3:
     #- bash deploy/aws-code-deploy/deploy.sh
     - ls
     - echo $AWS_SECRET_ACCESS_KEY
-    - aws s3 cp node-chat-app.zip $AWS_S3_LOCATION 
+    - aws s3 cp . $AWS_S3_LOCATION --recursive
