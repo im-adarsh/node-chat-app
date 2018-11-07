@@ -28,6 +28,11 @@ test:
     # ToDo: Add coverage
 
 uploadToS3:
+  variables:
+      AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION
+      AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+      AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+      AWS_S3_LOCATION: s3://s3-code-deploy-ec2
   image: "ubuntu:latest" 
   only:
     - develop
