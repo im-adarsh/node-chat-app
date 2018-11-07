@@ -4,7 +4,7 @@ apt-get --quiet install --yes nodejs
 apt-get  --quiet install --yes  npm
 apt-get  --quiet install --yes  python-pip # AWS CLI requires python-pip, python is installed by default
 python3 -m pip uninstall pip && sudo apt install python3-pip --reinstall  # pip update 
-pip install awscli --force-reinstall --upgrade  # AWS CLI installation
+sudo pip install awscli --force-reinstall --upgrade  # AWS CLI installation
 npm install
 npm run deploy
 ls
